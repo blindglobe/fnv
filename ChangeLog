@@ -1,0 +1,5 @@
+2008-04-24  Evan Monroig  <evan.monroig@gmail.com>
+
+	* foreign-numeric-vector.lisp (:compile-toplevel): use
+	SB-EXT:FINALIZE instead of FINALIZE which doesn't work on my setup
+

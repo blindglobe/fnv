@@ -85,8 +85,8 @@
 					     length))))
 		(when initial-value
 		  (fnv-allset ,fnv-name initial-value))
-		(finalize ,fnv-name (lambda () 
-				      (foreign-free foreign-ptr)))
+		(sb-ext:finalize ,fnv-name (lambda () 
+                                             (foreign-free foreign-ptr)))
 		,fnv-name)))
 	  (declaim (inline ,fnv-ptr))
 	  
