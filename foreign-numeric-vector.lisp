@@ -68,6 +68,8 @@
 	   (over-fnv-name (ncat 'over- fnv-name))
 	   (with-fnv-ptr-name (ncat 'with- fnv-name '-ptr))
 	   (cffi-type (intern (symbol-name (ncat 'cffi- fnv-name)) :keyword))
+           (cffi-type-class (intern (symbol-name (ncat cffi-type '-type))
+                                    :keyword))
 	   (foreign-elt-size (foreign-type-size cffi-underlying-type)))
       (with-gensyms (index-sym val-sym fnv-ptr-ref-sym)
 	`(progn
@@ -221,10 +223,12 @@
 		(format str " ... ~A" (,fnv-ref f (1- length))))
 	      (format str ">")))
 	  
-
-	  (defctype ,cffi-type :pointer)
+          (define-foreign-type ,cffi-type-class ()
+            ()
+            (:actual-type :pointer)
+            (:simple-parser ,cffi-type))
 	  (defmethod translate-to-foreign ((val ,fnv-name) 
-					   (name (eql ',cffi-type)))
+					   (name ,cffi-type-class))
 	    (fnv-foreign-pointer val))
 	  
 	  (setf (cffi-type-to-fnv-type ',cffi-vector-name) ,cffi-type)
@@ -272,10 +276,7 @@
 	  (export (list ',fnv-name ',make-fnv-name ',copy-fnv-name
 		   ',fnv-name-length ',fnv-ref
 		   ',in-fnv-name ',over-fnv-name ',fnv-ptr ',fnv-ptr-ref
-		   ',with-fnv-ptr-name))
-	  
-	  
-	  )))))
+		   ',with-fnv-ptr-name)))))))
 
 
 (make-fnv-typed-vector int32
