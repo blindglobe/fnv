@@ -1,3 +1,9 @@
+2008-05-17  Evan Monroig  <evan.monroig@gmail.com>
+
+	* foreign-numeric-vector.lisp
+	(:compile-toplevel): use FINALIZE instead of SB-EXT:FINALIZE
+	(finalize): add function FINALIZE for sbcl, cmucl and clisp
+
 2008-04-28  Evan Monroig  <evan.monroig@gmail.com>
 
 	* foreign-numeric-vector.lisp (defctype): changed to use

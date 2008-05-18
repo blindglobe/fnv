@@ -12,6 +12,13 @@
 ;; (declaim (optimize (speed 1) (safety 3) (debug 3)))
 (declaim (optimize (speed 3) (safety 0) (debug 1)))
 
+(defun finalize (object function)
+  #+sbcl (sb-ext:finalize object function)
+  #+cmu (extensions:finalize object function)
+  #+clisp (ext:finalize object function)
+  #-(or sbcl cmu clisp)
+  (error "please add an equivalent to FINALIZE for your lisp"))
+
 (defgeneric fnv-foreign-pointer (fnv))
 (defgeneric fnv-copy (fnv))
 (defgeneric fnv-length (fnv))
@@ -87,8 +94,11 @@
 					     length))))
 		(when initial-value
 		  (fnv-allset ,fnv-name initial-value))
-		(sb-ext:finalize ,fnv-name (lambda () 
-                                             (foreign-free foreign-ptr)))
+                ;; clisp gives arguments to the function passed to
+                ;; finalize
+		(finalize ,fnv-name (lambda (&rest args)
+                                      (declare (ignore args))
+                                      (foreign-free foreign-ptr)))
 		,fnv-name)))
 	  (declaim (inline ,fnv-ptr))
 	  
