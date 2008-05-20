@@ -1,3 +1,8 @@
+2008-05-20  Evan Monroig  <evan.monroig@gmail.com>
+
+	* foreign-numeric-vector.lisp (make-fnv-typed-vector): change cffi
+	types to be symbols in this package, not keywords
+
 2008-05-17  Evan Monroig  <evan.monroig@gmail.com>
 
 	* foreign-numeric-vector.lisp

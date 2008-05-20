@@ -74,9 +74,8 @@
 	   (in-fnv-name (ncat 'in- fnv-name))
 	   (over-fnv-name (ncat 'over- fnv-name))
 	   (with-fnv-ptr-name (ncat 'with- fnv-name '-ptr))
-	   (cffi-type (intern (symbol-name (ncat 'cffi- fnv-name)) :keyword))
-           (cffi-type-class (intern (symbol-name (ncat cffi-type '-type))
-                                    :keyword))
+	   (cffi-type (intern (symbol-name (ncat 'cffi- fnv-name))))
+           (cffi-type-class (intern (symbol-name (ncat cffi-type '-type))))
 	   (foreign-elt-size (foreign-type-size cffi-underlying-type)))
       (with-gensyms (index-sym val-sym fnv-ptr-ref-sym)
 	`(progn
@@ -241,7 +240,7 @@
 					   (name ,cffi-type-class))
 	    (fnv-foreign-pointer val))
 	  
-	  (setf (cffi-type-to-fnv-type ',cffi-vector-name) ,cffi-type)
+	  (setf (cffi-type-to-fnv-type ',cffi-vector-name) ',cffi-type)
 
 	  ,@(mapcar 
 	     (lambda (function-name)
@@ -286,7 +285,7 @@
 	  (export (list ',fnv-name ',make-fnv-name ',copy-fnv-name
 		   ',fnv-name-length ',fnv-ref
 		   ',in-fnv-name ',over-fnv-name ',fnv-ptr ',fnv-ptr-ref
-		   ',with-fnv-ptr-name)))))))
+		   ',with-fnv-ptr-name ',cffi-type)))))))
 
 
 (make-fnv-typed-vector int32
