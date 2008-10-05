@@ -1,15 +1,8 @@
 ;; Copyright rif 2006.
 ;; Modified BSD License (see LICENSE file in this directory).
 
-(defpackage :org.middleangle.foreign-numeric-vector-lowlevel-copy
-  (:nicknames :fnv-lowlevel-copy)
-  (:use :common-lisp :cffi :fnv-utils :iter)
-  (:export :make-lowlevel-copier 
-	   :lowlevel-copy-float 
-	   :lowlevel-copy-double
-	   :lowlevel-copy-int
-	   :lowlevel-copy-int32
-	   :lowlevel-copy-int64))
+;; repackaged according to CLHS suggestions, AJ Rossini <blindglobe@gmail.com>
+;; Copyright 2008.
 
 (in-package :org.middleangle.foreign-numeric-vector-lowlevel-copy)
 

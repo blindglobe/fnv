@@ -1,15 +1,8 @@
 ;; Copyright rif 2006.
 ;; Modified BSD License (see LICENSE file in this directory).
 
-(defpackage :org.middleangle.foreign-numeric-vector-utils
-  (:nicknames :fnv-utils)
-  (:use :common-lisp :cffi :iterate)
-  (:export :ncat :with-gensyms :fixfor :fixtimes
-	   :fix+ fix* :fix- :fix/
-	   :df+ :df* :df- :df/
-	   :sf+ :sf* :sf- :sf/
-	   :cdf+ :cdf* :cdf- :cdf/
-	   :csf+ :csf* :csf- :csf/))
+;; repackaged according to CLHS suggestions, AJ Rossini <blindglobe@gmail.com>
+;; Copyright 2008.
 
 (in-package :org.middleangle.foreign-numeric-vector-utils)
 
