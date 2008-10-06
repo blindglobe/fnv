@@ -13,6 +13,10 @@
 (defsystem :org.middleangle.foreign-numeric-vector
   :depends-on (:cffi :iterate)
   :components
-  ((:file "utils")
-   (:file "lowlevel-copy" :depends-on ("utils"))
-   (:file "foreign-numeric-vector" :depends-on ("utils" "lowlevel-copy"))))
+  ((:file "packages")
+   (:file "utils"
+	  :depends-on ("packages"))
+   (:file "lowlevel-copy"
+	  :depends-on ("packages" "utils"))
+   (:file "foreign-numeric-vector"
+	  :depends-on ("packages" "utils" "lowlevel-copy"))))
