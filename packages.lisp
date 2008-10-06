@@ -2,7 +2,8 @@
 ;; Modified BSD License (see LICENSE file in this directory).
 
 ;; Copyright 2008, AJ Rossini <blindglobe@gmail.com>.  Same license as Rif.
-;; (mostly to move package statements into a single file, as per CLHS recommendation. 
+;; (mostly to move package statements into a single file, as per CLHS
+;; recommendation.
 
 (defpackage :org.middleangle.foreign-numeric-vector-utils
   (:nicknames :fnv-utils)
