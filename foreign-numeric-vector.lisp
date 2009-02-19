@@ -14,7 +14,7 @@
   #+cmu (extensions:finalize object function)
   #+clisp (ext:finalize object function)
   #-(or sbcl cmu clisp)
-  (error "please add an equivalent to FINALIZE for your lisp"))
+  (error "Please add an equivalent to FINALIZE for your lisp"))
 
 (defgeneric fnv-foreign-pointer (fnv))
 (defgeneric fnv-copy (fnv))
