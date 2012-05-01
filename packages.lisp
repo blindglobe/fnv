@@ -8,7 +8,8 @@
 (defpackage :org.middleangle.foreign-numeric-vector-utils
   (:nicknames :fnv-utils)
   (:use :common-lisp :cffi :iterate)
-  (:export :ncat :with-gensyms :fixfor :fixtimes
+  (:export :complex-float :complex-double
+           :ncat :with-gensyms :fixfor :fixtimes
 	   :fix+ fix* :fix- :fix/
 	   :df+ :df* :df- :df/
 	   :sf+ :sf* :sf- :sf/

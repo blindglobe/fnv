@@ -296,25 +296,25 @@
 ;; This isn't valid, we don't have the right type converter in place.    
 
 ;; (defun complex-double-float-write-mem-aref (length reps)
-;;   (let ((foreign (foreign-alloc :complex-double :count length)))
+;;   (let ((foreign (foreign-alloc 'complex-double :count length)))
 ;;     (declare (type fixnum length)
 ;; 	     (type fixnum reps))
 
 ;;     (fixtimes (r reps)
 ;;       (fixtimes (i length)
-;; 	(setf (mem-aref foreign :complex-double i) #C(1.0d0 1.0d0))))
+;; 	(setf (mem-aref foreign 'complex-double i) #C(1.0d0 1.0d0))))
 ;;     (format t "Filled foreign array with #C(1.0d0 1.0d0), using mem-aref.")))
 
 ;; (defun complex-double-float-write-mem-ref (length reps)
-;;   (let ((foreign (foreign-alloc :complex-double :count length)))
+;;   (let ((foreign (foreign-alloc 'complex-double :count length)))
 ;;     (declare (type fixnum length)
 ;; 	     (type fixnum reps))
     
 ;;     (fixtimes (r reps)
 ;;       (fixtimes (i length)
 ;; 	(setf (mem-ref foreign 
-;; 		       :complex-double 
-;; 		       (fix* #.(foreign-type-size :complex-double) i))
+;; 		       'complex-double 
+;; 		       (fix* #.(foreign-type-size 'complex-double) i))
 ;; 	      #C(1.0d0 1.0d0))))
 ;;     (format t "Filled foreign array with #C(1.0d0 1.0d0), using mem-ref.")))
 
