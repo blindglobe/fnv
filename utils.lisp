@@ -50,10 +50,10 @@
 (make-typed-ops (complex single-float) csf)
 
 
-(defcstruct :complex-float
+(defcstruct complex-float
   (real :float)
   (imag :float))
 
-(defcstruct :complex-double
+(defcstruct complex-double
   (real :double)
   (imag :double))
