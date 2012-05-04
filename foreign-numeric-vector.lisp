@@ -61,7 +61,7 @@
 	   (lowlevel-copier (ncat 'lowlevel-copy- cffi-underlying-type))
 	   (copy-fnv-name (ncat 'copy- fnv-name))
 	   (constructor (ncat 'make- fnv-name '-internal))
-	   (key-name (intern (symbol-name name) :keyword))
+	   (key-name name)
 	   (fnv-ref (ncat fnv-name '-ref))
 	   (fnv-ptr-ref (ncat fnv-name '-ptr-ref))
 	   (set-fnv-ref (ncat 'set- fnv-ref))
@@ -82,7 +82,7 @@
 	  
 	  (defun ,make-fnv-name (length &key foreign-ptr initial-value)
 	    (let ((foreign-ptr (or foreign-ptr 
-				   (foreign-alloc ,key-name :count length))))
+				   (foreign-alloc ',key-name :count length))))
 	      (let ((,fnv-name
 		     (,constructor :foreign-pointer foreign-ptr
 				   :length (if (null-pointer-p foreign-ptr)
@@ -285,12 +285,12 @@
 		   ',with-fnv-ptr-name ',cffi-type)))))))
 
 
-(make-fnv-typed-vector int32
+(make-fnv-typed-vector :int32
 		       :lisp-type (signed-byte 32)
 		       :cffi-underlying-type :int32)
 
 #+cffi-features:x86-64 
-(make-fnv-typed-vector int64
+(make-fnv-typed-vector :int64
 		       :lisp-type (signed-byte 64)
 		       :cffi-underlying-type :int64)
 
@@ -298,11 +298,11 @@
     #+cffi-features:x86 :fnv-int64
     #-cffi-features:x86 :fnv-int32)
 
-(make-fnv-typed-vector float
+(make-fnv-typed-vector :float
 		       :lisp-type single-float
 		       :cffi-underlying-type :float)
 
-(make-fnv-typed-vector double
+(make-fnv-typed-vector :double
 		       :lisp-type double-float
 		       :cffi-underlying-type :double)
 
@@ -313,7 +313,7 @@
 		       :cffi-elts-per-lisp-elt 2
 		       :lisp-constructor complex
 		       :part-extractors (realpart imagpart)
-		       :cffi-vector-name :complex-float
+		       :cffi-vector-name complex-float
 		       :sorters (((lambda (i j)
 				    (flet ((mag^2 (i)
 					     (+ (* (realpart i) (realpart i))
@@ -334,7 +334,7 @@
 		       :cffi-elts-per-lisp-elt 2
 		       :lisp-constructor complex
 		       :part-extractors (realpart imagpart)
-		       :cffi-vector-name :complex-double
+		       :cffi-vector-name complex-double
 		       :sorters (((lambda (i j)
 				    (flet ((mag^2 (i)
 					     (+ (* (realpart i) (realpart i))
