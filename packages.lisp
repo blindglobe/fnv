@@ -1,7 +1,7 @@
 ;; Copyright rif 2006.
 ;; Modified BSD License (see LICENSE file in this directory).
 
-;; Copyright 2008, AJ Rossini <blindglobe@gmail.com>.  Same license as Rif.
+;; Copyright 2008--2012, AJ Rossini <blindglobe@gmail.com>.  Same license as Rif.
 ;; (mostly to move package statements into a single file, as per CLHS
 ;; recommendation.
 
@@ -15,7 +15,6 @@
 	   :sf+ :sf* :sf- :sf/
 	   :cdf+ :cdf* :cdf- :cdf/
 	   :csf+ :csf* :csf- :csf/))
-
 
 (defpackage :org.middleangle.foreign-numeric-vector-lowlevel-copy
   (:nicknames :fnv-lowlevel-copy)
@@ -101,7 +100,5 @@
 	   :fnv-int32-foreign-pointer
 	   :in-fnv-complex-double
 	   :copy-fnv-double
-	   :fnv-int32-length
-
-	   ))
+	   :fnv-int32-length))
 
