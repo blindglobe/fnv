@@ -100,5 +100,19 @@
 	   :fnv-int32-foreign-pointer
 	   :in-fnv-complex-double
 	   :copy-fnv-double
-	   :fnv-int32-length))
+	   :fnv-int32-length
+
+	   :FNV-INT64-REF
+	   :FNV-INT64-PTR-REF
+	   :FNV-INT64-FOREIGN-POINTER
+	   :SORT-FNV-INT64-<!
+	   :COPY-FNV-INT64
+	   :MAKE-FNV-INT64
+	   :IN-FNV-INT64
+	   :OVER-FNV-INT64
+	   :SORT-FNV-INT64->!
+	   :CFFI-FNV-INT64
+	   :FNV-INT64-LENGTH
+	   :WITH-FNV-INT64-PTR
+	   :FNV-INT64	   ))
 
