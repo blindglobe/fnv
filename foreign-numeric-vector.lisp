@@ -13,7 +13,8 @@
   #+sbcl (sb-ext:finalize object function)
   #+cmu (extensions:finalize object function)
   #+clisp (ext:finalize object function)
-  #-(or sbcl cmu clisp)
+  #+ccl (trivial-garbage:finalize object function)
+  #-(or sbcl cmu clisp ccl)
   (error "Please add an equivalent to FINALIZE for your lisp"))
 
 (defgeneric fnv-foreign-pointer (fnv))

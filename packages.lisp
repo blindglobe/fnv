@@ -29,6 +29,7 @@
 (defpackage :org.middleangle.foreign-numeric-vector
   (:nicknames :foreign-numeric-vector :fnv)
   (:use :common-lisp :cffi :iterate :fnv-utils :fnv-lowlevel-copy)
+  #+ccl (:shadowing-import-from :trivial-garbage)
   (:export :fnv-foreign-pointer :fnv-length :fnv-copy 
 	   :*fnv-print-length* :fnv-allset :cffi-type-to-fnv-type
 
