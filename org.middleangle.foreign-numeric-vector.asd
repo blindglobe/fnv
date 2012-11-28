@@ -11,7 +11,7 @@
 (in-package :fnv-asd)
 
 (defsystem :org.middleangle.foreign-numeric-vector
-  :depends-on (:cffi :iterate)
+  :depends-on (:cffi :iterate :trivial-garbage)
   :components
   ((:file "packages")
    (:file "utils"
