@@ -77,7 +77,8 @@
 	   (foreign-elt-size (foreign-type-size cffi-underlying-type)))
       (with-gensyms (index-sym val-sym fnv-ptr-ref-sym)
 	`(progn
-	  (defstruct (,fnv-name (:constructor ,constructor))
+	  (defstruct (,fnv-name (:constructor ,constructor)
+                                (:copier nil))
 	    (foreign-pointer nil :read-only t)
 	    (length 0 :type fixnum :read-only t))
 	  
@@ -348,5 +349,3 @@
 				 ((lambda (i j)
 				    (< (imagpart i) (imagpart j)))
 				  imagpart-<)))
-
-
